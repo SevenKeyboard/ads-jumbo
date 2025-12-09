@@ -603,14 +603,14 @@ class AdsJumbo
         setTimer % obm, 10000
     }
     _timerMemoryUsage()    {
-        totlaMemoryMB:=0
+        totalMemoryMB:=0
         for id,props in this.els    {
             bytes:=this._getProcessWorkingSetSize(props.pid)
             mb:=(kb:=bytes/1024)/1024
-            totlaMemoryMB+=mb
+            totalMemoryMB+=mb
         }
-        ;  tooltip % floor(totlaMemoryMB) "`n" this._maxMemoryMB
-        if (this._maxMemoryMB<totlaMemoryMB)    {
+        ;  tooltip % floor(totalMemoryMB) "`n" this._maxMemoryMB
+        if (this._maxMemoryMB<totalMemoryMB)    {
             obm:=this._obmTimerMemoryUsage
             setTimer % obm, % "Delete"
             callbackFunc:=this._restartcallbackFunc
