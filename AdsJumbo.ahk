@@ -730,7 +730,7 @@ class AdsJumbo_Static
     }
     ;----------------------------------------------------------------------------
     /*
-    _exeInstall()    {
+    _exeInstall()    { ;  Recommend excluding file installation and handling it separately via NSIS or other installers.
         if !(fileExist(this._subdir)~="D")    {
             fileCreateDir % this._subdir
             if (ErrorLevel)
