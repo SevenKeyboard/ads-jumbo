@@ -7,8 +7,8 @@
 ;
 ; Required files (relative to A_WorkingDir):
 ;   resource\AdsJumboWinForm.dll
-;   resource\BannerAdvertisement_AdsJumbo.exe
-;   resource\BannerAdvertisement_AdsJumbo.exe.config
+;   resource\BannerAdHost.AdsJumbo.exe
+;   resource\BannerAdHost.AdsJumbo.exe.config
 ;
 ; Documentation / References:
 ;   How-to: App compatibility
@@ -48,7 +48,7 @@ class AdsJumbo
 {
     __new()    {
         this._subdir:=A_WorkingDir "\resource"
-        this._exeFileName:="BannerAdvertisement_AdsJumbo.exe"
+        this._exeFileName:="BannerAdHost.AdsJumbo.exe"
         this._obmTimerWaitForm1:=objBindMethod(this,"_timerWaitForm1")
         this._obmTimerWaitForm2:=objBindMethod(this,"_timerWaitForm2")
         this._obmTimerDelayedAnimate:=objBindMethod(this,"_timerDelayedAnimate")
@@ -653,9 +653,7 @@ class AdsJumbo
     }
     _TickCount64    {
         get  {
-            return (0<=(TickCount64:=dllCall("Kernel32.dll\GetTickCount64", "UInt64")))
-                        ?TickCount64                    ;  0x0 to 0x7FFFFFFFFFFFFFFF
-                        :-1                             ;  0x8000000000000000 to 0xFFFFFFFFFFFFFFFF
+            return dllCall("Kernel32.dll\GetTickCount64", "Int64") & 0x7FFFFFFFFFFFFFFF ;  0x0 to 0x7FFFFFFFFFFFFFFF
         }
     }
 }
@@ -664,7 +662,7 @@ class AdsJumbo_Static
 {
     init()    {
         this._subdir:=A_WorkingDir "\resource"
-        this._exeFileName:="BannerAdvertisement_AdsJumbo.exe"
+        this._exeFileName:="BannerAdHost.AdsJumbo.exe"
         this._hHook:=0
         this._mainGuis:={}
         ;  this._exeInstall()
