@@ -5,7 +5,7 @@
 ; Author: SevenKeyboard Ltd. (2025)
 ; License: MIT License
 ;
-; Required files (relative to A_WorkingDir):
+; Required files (relative to A_ScriptFullPath):
 ;   resource\AdsJumboWinForm.dll
 ;   resource\BannerAdHost.AdsJumbo.exe
 ;   resource\BannerAdHost.AdsJumbo.exe.config
@@ -47,7 +47,7 @@ class VersionManager_AdsJumbo
 class AdsJumbo
 {
     __new()    {
-        this._subdir:=A_WorkingDir "\resource"
+        this._subdir:=A_ScriptFullPath "\resource"
         this._exeFileName:="BannerAdHost.AdsJumbo.exe"
         this._obmTimerWaitForm1:=objBindMethod(this,"_timerWaitForm1")
         this._obmTimerWaitForm2:=objBindMethod(this,"_timerWaitForm2")
@@ -661,7 +661,7 @@ class AdsJumbo
 class AdsJumbo_Static
 {
     init()    {
-        this._subdir:=A_WorkingDir "\resource"
+        this._subdir:=A_ScriptFullPath "\resource"
         this._exeFileName:="BannerAdHost.AdsJumbo.exe"
         this._hHook:=0
         this._mainGuis:={}
