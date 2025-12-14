@@ -1,4 +1,9 @@
-﻿;==============================================================
+﻿#Requires AutoHotkey v1.1.35+
+#Include %A_ScriptDir%
+#Include .\lib\getFullPathName.ahk
+#Include .\lib\OSVersion.ahk
+#Include .\lib\ShellHidden.ahk
+;==============================================================
 ; AdsJumbo — Banner advertisement host/embedding helper for AutoHotkey GUIs
 ;
 ; GitHub: https://github.com/SevenKeyboard/ads-jumbo
@@ -18,10 +23,6 @@
 ;   How to use WS_EX_LAYERED on child controls
 ;     https://stackoverflow.com/questions/42569348/how-to-use-ws-ex-layered-on-child-controls
 ;==============================================================
-#Include %A_ScriptDir%
-#Include .\lib\getFullPathName.ahk
-#Include .\lib\OSVersion.ahk
-#Include .\lib\ShellHidden.ahk
 class VersionManager_AdsJumbo
 {
     static _ := VersionManager_AdsJumbo._init()
@@ -39,7 +40,7 @@ class VersionManager_AdsJumbo
             return false
         actualMajor     := strSplit(actual, ".",, 2)[1]
         requiredMajor   := strSplit(required, ".",, 2)[1]
-        if (actualMajor != requiredMajor)
+        if (actualMajor !== requiredMajor)
             return false
         return verCompare(actual, ">=" required)
     }
