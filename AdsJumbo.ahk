@@ -1,4 +1,4 @@
-﻿#Requires AutoHotkey v1.1.35+
+﻿#Requires AutoHotkey v1.1.36+
 #Include %A_ScriptDir%
 #Include .\lib\getFullPathName.ahk
 #Include .\lib\OSVersion.ahk
