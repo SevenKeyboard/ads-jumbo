@@ -29,6 +29,8 @@ class VersionManager_AdsJumbo
     _init()    {
         global
         ADSJUMBO_VERSION := "1.0.3"
+        if (!this._verCheck(GETFULLPATHNAME_VERSION, "1.0.0"))
+            throw exception("getFullPathName version 1.x is required (minimum 1.0.0).")
         if (!this._verCheck(OSVERSION_VERSION, "2.0.0"))
             throw exception("OSVersion version 2.x is required (minimum 2.0.0).")
         if (!this._verCheck(SHELLHIDDEN_VERSION, "1.0.0"))
